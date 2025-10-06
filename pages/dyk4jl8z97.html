@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gourmet Delights - Culinary Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #A0522D; /* Sienna */
+            --secondary-color: #D2B48C; /* Tan */
+            --accent-color: #8B4513;   /* SaddleBrown */
+            --text-color: #333;
+            --light-text-color: #f8f8f8;
+            --background-light: #fff;
+            --background-dark: #2c2c2c;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-medium: rgba(0, 0, 0, 0.2);
+        }
+
+        /* Basic Reset & Body Styling */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            color: var(--light-text-color);
+            text-shadow: 2px 2px 4px var(--shadow-medium);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px var(--shadow-light);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px var(--shadow-medium);
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px var(--shadow-light);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            padding-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--light-text-color);
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInSlideUp 1s ease-out forwards 0.5s; /* Delay for effect */
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* Menu Section */
+        .menu-section {
+            padding: 80px 0;
+            background-color: var(--background-light);
+        }
+
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .food-item {
+            background-color: var(--background-light);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow-light);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            border: 1px solid #eee;
+        }
+
+        .food-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 10px 25px var(--shadow-medium);
+        }
+
+        .food-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+            transition: transform 0.5s ease;
+        }
+
+        .food-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .food-item-content {
+            padding: 25px;
+        }
+
+        .food-item h3 {
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+            font-size: 1.6rem;
+        }
+
+        .food-item p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .about-content img {
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow-light);
+            border: 5px solid var(--light-text-color);
+            transition: transform 0.4s ease;
+        }
+
+        .about-content img:hover {
+            transform: scale(1.03) rotate(-1deg);
+        }
+
+        .about-text {
+            max-width: 800px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1517436073740-109062de396f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+            padding: 100px 0;
+            color: var(--light-text-color);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: var(--light-text-color);
+            margin-bottom: 1.5rem;
+        }
+        .cta-section h2::after {
+            background-color: var(--secondary-color);
+        }
+
+        .cta-section p {
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+            font-size: 1.2rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            justify-content: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input[type="email"] {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 1rem;
+            flex-grow: 1;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            border-radius: 0 30px 30px 0;
+            padding: 12px 25px;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--background-dark);
+            color: var(--light-text-color);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--light-text-color);
+            margin: 0 10px;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 3rem;
+            }
+            h2 {
+                font-size: 2.2rem;
+            }
+            .nav-links li {
+                margin-left: 20px;
+            }
+            .food-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            .nav-links {
+                display: none; /* Hide for mobile, typically a hamburger menu would appear */
+            }
+            .hero-section {
+                height: 70vh;
+            }
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            .about-content {
+                flex-direction: column;
+            }
+            .about-content img {
+                max-width: 100%;
+            }
+            .newsletter-form {
+                flex-direction: column;
+                max-width: 300px;
+            }
+            .newsletter-form input[type="email"],
+            .newsletter-form button {
+                border-radius: 30px;
+                margin-bottom: 10px;
+                width: 100%;
+                text-align: center;
+            }
+            .newsletter-form button {
+                margin-bottom: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            .logo {
+                font-size: 1.5rem;
+            }
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            .food-item img {
+                height: 200px;
+            }
+            .food-item h3 {
+                font-size: 1.4rem;
+            }
+            .food-item p {
+                font-size: 0.9rem;
+            }
+            .menu-section, .about-section, .cta-section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Gourmet Delights</a>
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#cta">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <h1>Experience Culinary Excellence</h1>
+                <p>Savor the taste of handcrafted dishes made with passion and the freshest ingredients.</p>
+                <a href="#menu" class="btn">Explore Our Menu</a>
+            </div>
+        </section>
+
+        <section id="menu" class="menu-section">
+            <div class="container">
+                <h2>Our Signature Dishes</h2>
+                <div class="food-grid">
+                    <div class="food-item">
+                        <img src="https://source.unsplash.com/random/800x600/?pizza,food" alt="Delicious Pizza">
+                        <div class="food-item-content">
+                            <h3>Neapolitan Pizza</h3>
+                            <p>Classic Italian pizza with fresh mozzarella, basil, and San Marzano tomatoes.</p>
+                            <a href="#" class="btn">View Details</a>
+                        </div>
+                    </div>
+                    <div class="food-item">
+                        <img src="https://source.unsplash.com/random/800x600/?pasta,food" alt="Creamy Pasta">
+                        <div class="food-item-content">
+                            <h3>Truffle Pasta</h3>
+                            <p>Handmade pasta tossed in a creamy truffle sauce with parmesan shavings.</p>
+                            <a href="#" class="btn">View Details</a>
+                        </div>
+                    </div>
+                    <div class="food-item">
+                        <img src="https://source.unsplash.com/random/800x600/?salad,food" alt="Fresh Salad">
+                        <div class="food-item-content">
+                            <h3>Mediterranean Salad</h3>
+                            <p>A refreshing mix of seasonal greens, feta, olives, and a zesty vinaigrette.</p>
+                            <a href="#" class="btn">View Details</a>
+                        </div>
+                    </div>
+                    <div class="food-item">
+                        <img src="https://source.unsplash.com/random/800x600/?steak,food" alt="Juicy Steak">
+                        <div class="food-item-content">
+                            <h3>Ribeye Steak</h3>
+                            <p>Perfectly grilled ribeye served with roasted vegetables and a rich red wine reduction.</p>
+                            <a href="#" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2>Our Story & Philosophy</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>At Gourmet Delights, our journey began with a simple passion: to share exceptional food that tells a story. We believe that dining is more than just eating; it's an experience that awakens the senses and creates lasting memories.</p>
+                        <p>We meticulously source the freshest, high-quality ingredients from local farms and trusted suppliers. Our chefs, masters of their craft, blend traditional techniques with innovative flair to create dishes that are both comforting and exciting.</p>
+                        <p>From our cozy ambiance to our attentive service, every detail is designed to ensure your visit is truly special. Join us and discover a world of culinary wonders!</p>
+                    </div>
+                    <img src="https://source.unsplash.com/random/800x600/?chef,kitchen" alt="Chef preparing food in a kitchen">
+                </div>
+            </div>
+        </section>
+
+        <section id="cta" class="cta-section">
+            <div class="container">
+                <h2>Join Our Culinary Community</h2>
+                <p>Sign up for our newsletter to receive exclusive offers, new menu updates, and special event invitations!</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn">Subscribe Now</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2023 Gourmet Delights. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
