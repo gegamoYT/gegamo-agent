@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>Generated Page</title></head><body><div class="container">
+        <h1 id="main-greeting"></h1>
+        <p id="full-date-display"></p>
+        <button id="date-toggle-button" class="date-toggle-btn">Show Full Date</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainGreetingElement = document.getElementById('main-greeting');
+            const fullDateDisplayElement = document.getElementById('full-date-display');
+            const dateToggleButton = document.getElementById('date-toggle-button');
+
+            // Function to get the current time of day greeting
+            const getTimeOfDayGreeting = () => {
+                const hour = new Date().getHours();
+                if (hour >= 5 && hour < 12) { // 5 AM - 11:59 AM
+                    return "Good morning";
+                } else if (hour >= 12 && hour < 17) { // 12 PM - 4:59 PM
+                    return "Good afternoon";
+                } else { // 5 PM - 4:59 AM
+                    return "Good evening";
+                }
+            };
+
+            // Set the initial greeting
+            const today = new Date();
+            const dayOfWeek = today.toLocaleDateString('en-US', { weekday: 'long' });
+            mainGreetingElement.textContent = `${getTimeOfDayGreeting()}. Today is ${dayOfWeek}.`;
+
+            // Function to format the full date (Year, Month, Day)
+            const getFullDate = () => {
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                return new Date().toLocaleDateString('en-US', options);
+            };
+
+            // Button click listener
+            dateToggleButton.addEventListener('click', () => {
+                // Toggle the 'visible' class to animate the display of the full date
+                fullDateDisplayElement.classList.toggle('visible');
+
+                // Update button text and date display based on visibility
+                if (fullDateDisplayElement.classList.contains('visible')) {
+                    fullDateDisplayElement.textContent = `Current Date: ${getFullDate()}`;
+                    dateToggleButton.textContent = "Hide Full Date";
+                } else {
+                    fullDateDisplayElement.textContent = ''; // Clear content when hidden
+                    dateToggleButton.textContent = "Show Full Date";
+                }
+            });
+        });
+    </script></body></html>
