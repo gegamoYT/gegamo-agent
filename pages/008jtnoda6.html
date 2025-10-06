@@ -1,0 +1,357 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skibidi.gay: Your #1 Destination for... Uh... Skibidi Fun!</title>
+    <!-- Google Fonts for that essential meme aesthetic -->
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        /* CSS variables for some truly chaotic colors */
+        :root {
+            --primary-bg: #1e1e1e; /* Darkest Gray */
+            --secondary-bg: #333333; /* Slightly lighter dark gray */
+            --accent-color-1: #ff00ff; /* Neon Pink/Magenta */
+            --accent-color-2: #00ffff; /* Neon Cyan */
+            --text-color-light: #ffffff; /* White */
+            --text-color-dark: #111111; /* Almost Black */
+            --shadow-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* General Reset & Body Styles */
+        body {
+            font-family: 'Comic Sans MS', 'Comic Neue', cursive; /* The undisputed king of meme fonts */
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at center, var(--primary-bg) 0%, #000000 100%);
+            color: var(--text-color-light);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            position: relative;
+            animation: glitchBackground 10s infinite alternate;
+        }
+
+        /* Glitchy background animation */
+        @keyframes glitchBackground {
+            0% { filter: hue-rotate(0deg); background-position: 0% 50%; }
+            25% { filter: hue-rotate(90deg); background-position: 50% 0%; }
+            50% { filter: hue-rotate(180deg); background-position: 100% 50%; }
+            75% { filter: hue-rotate(270deg); background-position: 50% 100%; }
+            100% { filter: hue-rotate(360deg); background-position: 0% 50%; }
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.85); /* Dark, slightly transparent background */
+            border: 7px double var(--accent-color-1); /* Double border for extra pizazz */
+            border-radius: 25px;
+            padding: 45px 35px;
+            margin: 20px;
+            max-width: 850px;
+            box-shadow: 0 15px 40px var(--shadow-color);
+            transform: rotate(-3deg); /* Slightly tilted for maximum meme effect */
+            animation: popInContainer 1s ease-out forwards;
+            position: relative;
+            z-index: 10;
+        }
+
+        @keyframes popInContainer {
+            from {
+                opacity: 0;
+                transform: scale(0.7) rotate(-10deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(-3deg);
+            }
+        }
+
+        header h1 {
+            font-family: 'Bangers', cursive;
+            font-size: 5em;
+            color: var(--accent-color-2); /* Neon Cyan title */
+            text-shadow: 8px 8px 0px var(--accent-color-1), 12px 12px 0px var(--text-color-dark); /* Bold, cartoonish shadow */
+            margin-bottom: 25px;
+            line-height: 1.1;
+            transform: rotate(2deg); /* Another slight tilt */
+            animation: bounceIn 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.1) rotate(0deg); opacity: 0; }
+            60% { transform: scale(1.2) rotate(5deg); opacity: 1; }
+            100% { transform: scale(1) rotate(2deg); }
+        }
+
+        .tagline {
+            font-size: 2em;
+            color: var(--text-color-light);
+            margin-bottom: 35px;
+            font-style: italic;
+            text-shadow: 3px 3px var(--shadow-color);
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 1.2s;
+        }
+
+        .features {
+            background-color: rgba(255, 255, 255, 0.15); /* Slightly transparent white for contrast */
+            border: 4px dashed var(--accent-color-2);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 35px;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.7);
+            animation: slideInLeft 1s ease-out forwards;
+            animation-delay: 1.8s;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-70px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .features h2 {
+            font-family: 'Press Start 2P', cursive; /* Pixel font for subheadings */
+            font-size: 1.8em;
+            color: var(--accent-color-1);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px var(--text-color-dark);
+        }
+
+        .features ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Spacing between list items */
+        }
+
+        .features li {
+            font-size: 1.5em;
+            position: relative;
+            padding-left: 40px;
+            text-align: left;
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0; /* Hidden until animated */
+            transition: color 0.3s ease;
+        }
+
+        .features li:hover {
+            color: var(--accent-color-2);
+        }
+
+        .features li:nth-child(1) { animation-delay: 2.2s; }
+        .features li:nth-child(2) { animation-delay: 2.5s; }
+        .features li:nth-child(3) { animation-delay: 2.8s; }
+        .features li:nth-child(4) { animation-delay: 3.1s; }
+
+
+        .features li::before {
+            content: '🚽'; /* Toilet emoji for Skibidi theme */
+            position: absolute;
+            left: 0;
+            color: var(--accent-color-1);
+            font-size: 1.3em;
+            transform: rotate(10deg);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--accent-color-1), var(--accent-color-2));
+            color: var(--text-color-dark);
+            font-family: 'Bangers', cursive;
+            font-size: 2.5em;
+            padding: 18px 40px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 10px 25px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            border: 4px solid var(--text-color-light);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: fadeInScale 1s ease-out forwards;
+            animation-delay: 3.5s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-10px) scale(1.08) rotate(7deg);
+            box-shadow: 0 18px 40px rgba(0, 255, 255, 0.7);
+            background: linear-gradient(45deg, var(--accent-color-2), var(--accent-color-1));
+        }
+
+        .disclaimer {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.9em;
+            color: var(--text-color-light);
+            margin-top: 30px;
+            text-shadow: 1px 1px var(--text-color-dark);
+            line-height: 1.5;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 4s;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid var(--accent-color-1);
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 1em;
+            color: var(--text-color-light);
+            opacity: 0.9;
+            text-shadow: 1px 1px var(--text-color-dark);
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 4.5s;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Keyframe for generic fade in */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Keyframe for fade in with scale */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Responsive Adjustments (because Skibidi memes need to be seen everywhere) */
+        @media (max-width: 768px) {
+            .container {
+                padding: 35px 25px;
+                border-width: 5px;
+                transform: rotate(-1deg);
+            }
+            header h1 {
+                font-size: 3.8em;
+                text-shadow: 6px 6px 0px var(--accent-color-1), 9px 9px 0px var(--text-color-dark);
+                transform: rotate(0deg);
+            }
+            .tagline {
+                font-size: 1.6em;
+            }
+            .features h2 {
+                font-size: 1.4em;
+                letter-spacing: 2px;
+            }
+            .features li {
+                font-size: 1.2em;
+                padding-left: 35px;
+            }
+            .features li::before {
+                font-size: 1.1em;
+            }
+            .cta-button {
+                font-size: 2em;
+                padding: 15px 30px;
+            }
+            .disclaimer {
+                font-size: 0.8em;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px 15px;
+                border-width: 3px;
+                border-radius: 15px;
+                transform: rotate(0deg);
+            }
+            header h1 {
+                font-size: 2.8em;
+                text-shadow: 4px 4px 0px var(--accent-color-1), 6px 6px 0px var(--text-color-dark);
+                line-height: 1.2;
+            }
+            .tagline {
+                font-size: 1.2em;
+                margin-bottom: 25px;
+            }
+            .features {
+                padding: 20px 15px;
+            }
+            .features h2 {
+                font-size: 1.1em;
+                letter-spacing: 1px;
+            }
+            .features ul {
+                gap: 10px;
+            }
+            .features li {
+                font-size: 1em;
+                padding-left: 28px;
+            }
+            .features li::before {
+                font-size: 1em;
+            }
+            .cta-button {
+                font-size: 1.6em;
+                padding: 12px 25px;
+                border-width: 3px;
+                transform: translateY(0) scale(1) rotate(0);
+            }
+            .cta-button:hover {
+                transform: translateY(-5px) scale(1.03) rotate(0);
+            }
+            .disclaimer {
+                font-size: 0.7em;
+                padding: 8px;
+            }
+            footer {
+                font-size: 0.8em;
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Skibidi.gay: Your #1 Destination for... Uh... Skibidi Fun!</h1>
+        </header>
+
+        <p class="tagline">"Where Skibidi Meets... 🌈 Friendship and Good Vibes! 🥳"</p>
+
+        <div class="features">
+            <h2>Why Our Skibidi Site Is GOATed:</h2>
+            <ul>
+                <li>🚽 High-Quality Skibidi Content (Rated E for *Everyone*!) </li>
+                <li>🕺 Daily Dancin' Toilets & Camera Heads!</li>
+                <li>🌟 Exclusive Behind-the-Scenes Skibidi Antics!</li>
+                <li>💯 100% Guaranteed Skibidi Satisfaction (of the wholesome, meme kind)!</li>
+            </ul>
+        </div>
+
+        <a href="#join-the-fun" class="cta-button">CLICK HERE FOR MAXIMUM SKIBIDI DOPAMINE!</a>
+
+        <p class="disclaimer">
+            ⚠️ DISCLAIMER: This is a meme website. It contains NO explicit content, pornographic material, or anything NSFW. <br>
+            It is a parody intended for comedic purposes only. Any resemblance to actual adult sites is purely coincidental <br>
+            and part of the satirical nature. Please enjoy responsibly and keep it wholesome!
+        </p>
+    </div>
+
+    <footer>
+        &copy; 2024 Skibidi.gay (not really, it's a meme. Don't sue us.) All rights reserved. (Also not really.)
+    </footer>
+</body>
+</html>
+```
