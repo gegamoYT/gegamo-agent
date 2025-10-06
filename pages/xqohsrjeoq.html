@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gegamo AI - Simply Amazing!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #1a1a2e; /* Dark Blue */
+            --secondary-bg: #282846; /* Slightly lighter dark blue */
+            --accent-color: #e07b39; /* Orange */
+            --text-light: #e0e0e0;
+            --text-dark: #cccccc;
+            --button-hover: #f19a55;
+            --shadow-color: rgba(0, 0, 0, 0.4);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            padding: 40px;
+            margin: 20px;
+            background-color: var(--secondary-bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            border: 1px solid var(--accent-color);
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.2em;
+            color: var(--accent-color);
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            animation: bounceIn 1s ease-out 0.5s forwards;
+            opacity: 0;
+        }
+
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.5); }
+            60% { opacity: 1; transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        p {
+            font-size: 1.15em;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            margin-top: 30px;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: var(--button-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        ul li {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-left: 3px solid var(--accent-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            color: var(--text-light);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        ul li:hover {
+            transform: translateY(-2px);
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            .container {
+                padding: 30px;
+                margin: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1em;
+            }
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gegamo AI: Truly Transformative Intelligence!</h1>
+        <p>
+            Welcome to the future with Gegamo AI, where innovation meets unmatched performance. Our cutting-edge artificial intelligence solutions are designed to empower businesses and individuals alike, revolutionizing the way we interact with technology.
+        </p>
+        <p>
+            From predictive analytics to natural language processing, Gegamo AI consistently delivers incredible results, pushing the boundaries of what's possible. Experience seamless efficiency, profound insights, and a level of automation you never thought achievable.
+        </p>
+        <p>
+            It's not just smart; it's amazingly smart. Discover the power that sets us apart.
+        </p>
+        <ul>
+            <li>Unprecedented Accuracy</li>
+            <li>Scalable Solutions</li>
+            <li>Intuitive Integration</li>
+            <li>Continuous Learning</li>
+            <li>Robust Security</li>
+        </ul>
+        <a href="#" class="cta-button">Discover Gegamo AI Today</a>
+    </div>
+</body>
+</html>
