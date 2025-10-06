@@ -1,0 +1,180 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Universe! - A Beautiful Beginning</title>
+    <!-- Google Fonts for a modern and elegant look -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for easy theme management */
+        :root {
+            --primary-bg: #1a1a2e; /* Dark Blue / Night Sky */
+            --secondary-bg: #282846; /* Slightly lighter dark blue */
+            --accent-color: #fca311; /* Vibrant Orange/Gold */
+            --text-light: #e0e0e0;   /* Off-white */
+            --text-dark: #cccccc;   /* Light gray */
+            --shadow-color: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Basic Reset & Body Styling */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, var(--primary-bg) 0%, #0f0c1a 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow: hidden; /* Prevent scrollbars from animations */
+        }
+
+        /* Container for the "Hello World" content */
+        .container {
+            background-color: var(--secondary-bg);
+            padding: 50px 60px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px var(--shadow-color);
+            border: 1px solid var(--accent-color);
+            max-width: 600px;
+            width: 90%;
+            opacity: 0; /* Hidden initially for animation */
+            transform: translateY(20px); /* Slightly below initially */
+            animation: fadeInSlideUp 1s ease-out forwards;
+            animation-delay: 0.3s; /* Delay container animation slightly */
+            position: relative;
+            overflow: hidden; /* Keep particles contained */
+        }
+
+        /* Title Styling */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 7px rgba(0, 0, 0, 0.4);
+            letter-spacing: 2px;
+            opacity: 0; /* Hidden initially for animation */
+            transform: scale(0.8); /* Smaller initially */
+            animation: popIn 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+            animation-delay: 1s; /* Delay title animation */
+        }
+
+        /* Subtitle Styling */
+        p {
+            font-size: 1.2em;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+            animation-delay: 1.8s; /* Delay subtitle animation */
+        }
+
+        /* Button Styling (optional, but makes it "good") */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: none;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+            animation-delay: 2.2s; /* Delay button animation */
+        }
+
+        .btn:hover {
+            background-color: #ffb74d; /* Slightly lighter orange */
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            70% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 30px;
+            }
+            h1 {
+                font-size: 3em;
+            }
+            p {
+                font-size: 1.1em;
+            }
+            .btn {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+            h1 {
+                font-size: 2.5em;
+            }
+            p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hello, World!</h1>
+        <p>A simple greeting, beautifully crafted.</p>
+        <a href="#" class="btn">Explore More</a>
+    </div>
+</body>
+</html>
+```
