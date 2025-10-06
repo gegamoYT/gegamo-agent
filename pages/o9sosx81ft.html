@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Day!</title>
+    <!-- Google Fonts for a modern, impactful look -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for a clean black, gray, and white theme */
+        :root {
+            --primary-bg: #1a1a1a;        /* Deep Black */
+            --secondary-bg: #2c2c2c;      /* Dark Gray for containers */
+            --accent-color: #e0e0e0;      /* Light Gray / White for highlights */
+            --text-light: #f0f0f0;        /* White for main text */
+            --text-dark: #cccccc;        /* Lighter Gray for secondary text */
+            --button-hover: #ffffff;     /* Pure white for button hover */
+            --shadow-color: rgba(0, 0, 0, 0.7); /* Darker shadow */
+        }
+
+        /* Basic Reset & Body Styling */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: radial-gradient(circle at center, var(--primary-bg) 0%, #000000 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow: hidden; /* Prevent scrollbars from animations */
+        }
+
+        /* Container for the main message and button */
+        .container {
+            background-color: var(--secondary-bg);
+            padding: 50px 70px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px var(--shadow-color);
+            border: 1px solid var(--accent-color);
+            max-width: 700px;
+            width: 90%;
+            opacity: 0; /* Hidden initially for animation */
+            transform: translateY(30px); /* Slightly below initially */
+            animation: fadeInSlideUp 1s ease-out forwards;
+            animation-delay: 0.3s; /* Delay container animation slightly */
+            position: relative;
+            overflow: hidden; /* For potential inner animations */
+        }
+
+        /* Main Greeting Styling */
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5em;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
+            opacity: 0; /* Hidden initially for animation */
+            transform: scale(0.9); /* Smaller initially */
+            animation: popIn 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+            animation-delay: 1s; /* Delay title animation */
+        }
+
+        /* Full Date Display Styling */
+        #full-date-display {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.2em;
+            color: var(--text-dark);
+            margin-top: 20px;
+            max-height: 0; /* Hidden by default */
+            opacity: 0;    /* Hidden by default */
+            overflow: hidden;
+            transition: max-height 0.7s ease-out, opacity 0.7s ease-out; /* Animated show/hide */
+        }
+
+        #full-date-display.visible {
+            max-height: 100px; /* Adjust as needed based on content */
+            opacity: 1;
+        }
+
+        /* Button Styling */
+        .date-toggle-btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            margin-top: 40px;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+            box-shadow: 0 8px 20px var(--shadow-color);
+            border: none;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+            animation-delay: 1.8s; /* Delay button animation */
+            letter-spacing: 0.5px;
+        }
+
+        .date-toggle-btn:hover {
+            background-color: var(--button-hover);
+            color: var(--secondary-bg); /* Darker text on hover */
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 12px 25px var(--shadow-color);
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            70% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 50px;
+            }
+            h1 {
+                font-size: 2.8em;
+            }
+            #full-date-display {
+                font-size: 1.1em;
+            }
+            .date-toggle-btn {
+                font-size: 1em;
+                padding: 10px 22px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 25px;
+                border-radius: 10px;
+            }
+            h1 {
+                font-size: 2.2em;
+            }
+            #full-date-display {
+                font-size: 1em;
+            }
+            .date-toggle-btn {
+                font-size: 0.9em;
+                padding: 10px 18px;
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="main-greeting"></h1>
+        <p id="full-date-display"></p>
+        <button id="date-toggle-button" class="date-toggle-btn">Show Full Date</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainGreetingElement = document.getElementById('main-greeting');
+            const fullDateDisplayElement = document.getElementById('full-date-display');
+            const dateToggleButton = document.getElementById('date-toggle-button');
+
+            // Function to get the current time of day greeting
+            const getTimeOfDayGreeting = () => {
+                const hour = new Date().getHours();
+                if (hour >= 5 && hour < 12) { // 5 AM - 11:59 AM
+                    return "Good morning";
+                } else if (hour >= 12 && hour < 17) { // 12 PM - 4:59 PM
+                    return "Good afternoon";
+                } else { // 5 PM - 4:59 AM
+                    return "Good evening";
+                }
+            };
+
+            // Set the initial greeting
+            const today = new Date();
+            const dayOfWeek = today.toLocaleDateString('en-US', { weekday: 'long' });
+            mainGreetingElement.textContent = `${getTimeOfDayGreeting()}. Today is ${dayOfWeek}.`;
+
+            // Function to format the full date (Year, Month, Day)
+            const getFullDate = () => {
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                return new Date().toLocaleDateString('en-US', options);
+            };
+
+            // Button click listener
+            dateToggleButton.addEventListener('click', () => {
+                // Toggle the 'visible' class to animate the display of the full date
+                fullDateDisplayElement.classList.toggle('visible');
+
+                // Update button text and date display based on visibility
+                if (fullDateDisplayElement.classList.contains('visible')) {
+                    fullDateDisplayElement.textContent = `Current Date: ${getFullDate()}`;
+                    dateToggleButton.textContent = "Hide Full Date";
+                } else {
+                    fullDateDisplayElement.textContent = ''; // Clear content when hidden
+                    dateToggleButton.textContent = "Show Full Date";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
